@@ -1,6 +1,6 @@
 {
   "name": "knectron",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Connect Electron to remote source such as Create React App.",
   "main": "dist/index.js",
   "bin": {
@@ -28,7 +28,7 @@
     "Socket"
   ],
   "author": "Blujedis <blujedicorp@gmail.com>",
-  "license": "MIT",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/blujedis/knectron/issues"
   },

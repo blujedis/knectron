@@ -22,7 +22,7 @@ const DEFAULTS: IConnectOptions = {
   spawnOptions: { stdio: 'pipe' },
   args: ['./dist'],
   maxTries: 5,
-  retryDelay: 800,
+  retryDelay: 1300,
   onConnected: url => console.log(`Connected to: ${url}`),
   onRetry: tries => console.log(`Retrying connection (${tries})`),
   onFailed: failures => console.log(`Failed to connect after (${failures}) attempts`),

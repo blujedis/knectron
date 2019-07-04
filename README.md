@@ -14,10 +14,27 @@ $ npm install knectron
 const knectron = require('../dist/knectron');
 
 knectron({
-  port: 3000,                 // (default: 3000)
-  host: '127.0.0.1',          // (default: 127.0.0.1)
-  args: ['./test/remote.js']  // args passed to Electron
+  args: ['./dist'] // first arg is path to electron app
 });
+```
+
+## Knectron Options
+
+```ts
+interface IConnectOptions {
+  port?: number;                  // port to listen on (default: 3000)
+  host?: string;                  // host to listen on (default: 127.0.0.1)
+  spawnOptions?: SpawnOptions;    // child_process options (default: { stdio: pipe })
+  args?: any[];                   // args passed to Electron (default: './dist')
+  maxTries?: number;              // max reconnect tries (default: 5)
+  retryDelay?: number;            // delay between retries (default: 1200)
+
+  // API ONLY - NO CLI
+  onConnected?: (url?: string) => void;
+  onFailed?: (tries?: number) => void;
+  onRetry?: (tries?: number) => void;
+  onExit?: (err: Error) => void;
+}
 ```
 
 ## CLI
@@ -83,12 +100,14 @@ Args provided after "--" directly passed to Electron`
 
 ```
 
-## Test Example
+## Using Knectron
 
-To see Knectron in action run <code>npm run test</code>.
+You probably want to head over to:
 
-This will start a simple **Express** server then run Knectron using **concurrently** to give you an idea of how this works.
+[Sparc](https://github.com/blujedis/sparc)
 
-Your implementation may differ but the process to connect to **Create React App** would be roughly the same. Just specify the host and port that your App is listening on then specify the path to your **Electron** main.js or whatever you've called it. Pretty simple. 
+There you will find full examples using **Knectron** both directly through the API and also with [Create React App](https://github.com/facebook/create-react-app).
 
-Enjoy!
+A working example with the required configuration WITHOUT ejecting can be found below:
+
+[Sparc - Create React App - Example](https://github.com/blujedis/sparc/example/cra)
