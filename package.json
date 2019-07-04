@@ -1,0 +1,48 @@
+{
+  "name": "knectron",
+  "version": "0.1.5",
+  "description": "Connect Electron to remote source such as Create React App.",
+  "main": "dist/index.js",
+  "bin": {
+    "knectron": "bin/knectron"
+  },
+  "scripts": {
+    "build": "rimraf ./dist && tsc",
+    "watch": "tsc -w",
+    "serve": "node ./test/server",
+    "connect": "node ./test/connect",
+    "test": "concurrently \"npm run serve\" \"npm run connect\"  --kill-others",
+    "test:cli": "knectron ./test/main"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blujedis/knectron.git"
+  },
+  "keywords": [
+    "Electron",
+    "Remote",
+    "Create",
+    "React",
+    "App",
+    "Net",
+    "Socket"
+  ],
+  "author": "Blujedis <blujedicorp@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blujedis/knectron/issues"
+  },
+  "homepage": "https://github.com/blujedis/knectron#readme",
+  "devDependencies": {
+    "@types/node": "^12.0.12",
+    "concurrently": "^4.1.1",
+    "electron": "^5.0.6",
+    "express": "^4.17.1",
+    "rimraf": "^2.6.3",
+    "typescript": "^3.5.2"
+  },
+  "dependencies": {
+    "cross-spawn": "^6.0.5",
+    "import-local": "^3.0.0"
+  }
+}
