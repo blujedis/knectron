@@ -110,4 +110,4 @@ There you will find full examples using **Knectron** both directly through the A
 
 A working example with the required configuration WITHOUT ejecting can be found below:
 
-[Sparc - Create React App - Example](https://github.com/blujedis/sparc/example/cra)
+[Sparc - Create React App - Example](https://github.com/blujedis/sparc/tree/master/example/cra)
