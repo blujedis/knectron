@@ -11,7 +11,7 @@ Options:
   --host            the host to connect to
   --max-tries       maximum connection retries
   --retry-delay     delay until retry
-  --spawn-options   see Node spawn options.stdio
+  --spawn-options   Node child_process spawn options
   --help, -h        display help
   --examples        show examples
 
@@ -34,11 +34,11 @@ if (opts.help || opts.h || opts.examples || opts.example) {
   process.exit(0);
 }
 
-// if (!args[0]) {
-//   console.error(`Cannot start Knectron using path of undefined`);
-//   process.exit();
-// }
+if (!args[0]) {
+  console.error(`Cannot start Knectron using path of undefined`);
+  process.exit();
+}
 
-opts.args = [ args[0], ...ignored ];
+opts.args = [args[0], ...ignored];
 
 knectron(opts);

@@ -4,14 +4,14 @@ function parseArgv() {
     const argv = process.argv.slice(2);
     const ignoreIdx = argv.indexOf('--');
     let ignored = ~ignoreIdx ? argv.slice(ignoreIdx + 1) : [];
-    let args = ~ignoreIdx ? argv.slice(0, ignoreIdx - 1) : [...argv];
+    let args = ~ignoreIdx ? argv.slice(0, ignoreIdx) : [...argv];
     function toCamelcase(val) {
         const parts = val.replace(/^--?/, '').split('-');
         if (parts.length === 1)
             return parts[0];
         return parts[0] + parts[1].charAt(0).toUpperCase() + parts[1].slice(1);
     }
-    const opts = args.reduce((a, c) => {
+    const opts = [...args].reduce((a, c) => {
         if (/^--?/.test(c)) {
             const parts = c.split('=');
             const key = toCamelcase(parts[0]); // camelcase(parts[0]);

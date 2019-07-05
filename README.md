@@ -8,7 +8,7 @@ Utility to connect Electron to remote source such as Create React App.
 $ npm install knectron
 ```
 
-### Configure
+### Using API
 
 ```ts
 const knectron = require('../dist/knectron');
@@ -37,15 +37,19 @@ interface IConnectOptions {
 }
 ```
 
-## CLI
+## Using CLI
 
 Knectron comes with a simple CLI. You can either install globally:
 
 ### Using Globally
 
+Install **Knectron** globally.
+
 ```sh
 $ npm install knectron -g
 ```
+
+One in your path you can do the following where args after "--" are passed directly to electron as shown here below.
 
 ```sh
 $ knectron ./main.js -- --enable-logging
@@ -63,16 +67,23 @@ Or you can use npm scripts to execute:
 }
 ```
 
-Then you can run:
+Then simply run the script as you would any npm script:
 
 ```sh
 $ npm run knectron
 ```
 
-### CLI Options
+### CLI Help
+
+To display help from your terminal run:
+
+```sh
+$ knectron --help
+```
+
+You will see the below help:
 
 ```js
-
 `Usage: knectron <path> [options]
 
 Options:
@@ -80,7 +91,7 @@ Options:
   --host            the host to connect to
   --max-tries       maximum connection retries
   --retry-delay     delay until retry
-  --spawn-options   see Node spawn options.stdio
+  --spawn-options   Node child_process spawn options
   --help, -h        display help
   --examples        show examples
 
@@ -89,6 +100,14 @@ Args provided after "--" directly passed to Electron`
 ```
 
 ### CLI Examples
+
+From your terminal type:
+
+```sh
+$ knectron --examples
+```
+
+The following will be shown:
 
 ```js
 
@@ -100,14 +119,10 @@ Args provided after "--" directly passed to Electron`
 
 ```
 
-## Using Knectron
+## Using Knectron with Create React App
 
 You probably want to head over to:
 
 [Sparc](https://github.com/blujedis/sparc)
 
-There you will find full examples using **Knectron** both directly through the API and also with [Create React App](https://github.com/facebook/create-react-app).
-
-A working example with the required configuration WITHOUT ejecting can be found below:
-
-[Sparc - Create React App - Example](https://github.com/blujedis/sparc/tree/master/example/cra)
+A working example using **Knectron** with [Create React App](https://github.com/facebook/create-react-app) without ejecting can be found [here](https://github.com/blujedis/sparc/tree/master/example/cra)
