@@ -1,6 +1,6 @@
 {
   "name": "knectron",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Connect Electron to remote source such as Create React App.",
   "main": "dist/index.js",
   "bin": {
@@ -27,7 +27,8 @@
     "React",
     "App",
     "Net",
-    "Socket"
+    "Socket",
+    "Sparc"
   ],
   "author": "Blujedis <blujedicorp@gmail.com>",
   "license": "ISC",
