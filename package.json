@@ -1,6 +1,6 @@
 {
   "name": "knectron",
-  "version": "0.1.12",
+  "version": "0.1.14",
   "description": "Connect Electron to remote source such as Create React App.",
   "main": "dist/index.js",
   "bin": {
@@ -12,8 +12,7 @@
     "serve": "node ./test/server",
     "connect": "node ./test/connect",
     "test": "concurrently \"npm run serve\" \"npm run connect\"  --kill-others",
-    "test:cli": "knectron ./test/main",
-    "prepublish": "git add . && git commit -am 'auto commit' && git push"
+    "test:cli": "knectron ./test/main"
   },
   "repository": {
     "type": "git",

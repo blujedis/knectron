@@ -12,9 +12,10 @@ Usage: knectron <path> [options]
 Options:
   --port            the port to connect to
   --host            the host to connect to
+  --silent          hides retries
   --max-tries       maximum connection retries
   --retry-delay     delay until retry
-  --spawn-options   see Node spawn options.stdio
+  --spawn-options   Node child_process spawn options
   --help, -h        display help
   --examples        show examples
 
@@ -34,10 +35,10 @@ if (opts.help || opts.h || opts.examples || opts.example) {
         console.log(examples);
     process.exit(0);
 }
-// if (!args[0]) {
-//   console.error(`Cannot start Knectron using path of undefined`);
-//   process.exit();
-// }
+if (!args[0]) {
+    console.error(`Cannot start Knectron using path of undefined`);
+    process.exit();
+}
 opts.args = [args[0], ...ignored];
 _1.default(opts);
 //# sourceMappingURL=cli.js.map

@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 const net_1 = require("net");
 const cross_spawn_1 = __importDefault(require("cross-spawn"));
 const DEFAULTS = {
+    silent: false,
     port: parseInt(process.env.PORT || '3000', 10),
     host: process.env.HOST || '127.0.0.1',
     spawnOptions: { stdio: 'pipe' },
@@ -59,7 +60,7 @@ function knectron(options) {
         }
         timeoutId = setTimeout(() => {
             tries += 1;
-            if (options.onRetry)
+            if (options.onRetry && !options.silent)
                 options.onRetry(tries);
             connect();
         }, options.retryDelay);
