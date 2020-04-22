@@ -89,6 +89,7 @@ You will see the below help:
 Options:
   --port            the port to connect to
   --host            the host to connect to
+  --silent          hides retries
   --max-tries       maximum connection retries
   --retry-delay     delay until retry
   --spawn-options   Node child_process spawn options

@@ -4,6 +4,7 @@ import spawn from 'cross-spawn';
 import { ChildProcess, SpawnOptions } from 'child_process';
 
 interface IConnectOptions {
+  silent?: boolean;
   port?: number;
   host?: string;
   spawnOptions?: SpawnOptions;
@@ -17,6 +18,7 @@ interface IConnectOptions {
 }
 
 const DEFAULTS: IConnectOptions = {
+  silent: false,
   port: parseInt(process.env.PORT || '3000', 10),
   host: process.env.HOST || '127.0.0.1',
   spawnOptions: { stdio: 'pipe' },
@@ -103,7 +105,7 @@ function knectron(options?: IConnectOptions) {
 
       tries += 1;
 
-      if (options.onRetry)
+      if (options.onRetry && !options.silent)
         options.onRetry(tries);
 
       connect();
