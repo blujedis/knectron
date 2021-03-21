@@ -13,7 +13,7 @@ const DEFAULTS = {
     maxTries: 5,
     retryDelay: 1300,
     onConnected: url => console.log(`Connected to: ${url}`),
-    onRetry: tries => console.log(`Retrying connection (${tries})`),
+    onRetry: undefined,
     onFailed: failures => console.log(`Failed to connect after (${failures}) attempts`),
     onExit: err => err ? console.log(err.message) : console.log('Electron quit!')
 };
@@ -60,7 +60,7 @@ function knectron(options) {
         }
         timeoutId = setTimeout(() => {
             tries += 1;
-            if (options.onRetry && !options.silent)
+            if (options.onRetry && !options.silent && tries > 1)
                 options.onRetry(tries);
             connect();
         }, options.retryDelay);

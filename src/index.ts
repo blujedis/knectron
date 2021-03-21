@@ -4,17 +4,17 @@ import spawn from 'cross-spawn';
 import { ChildProcess, SpawnOptions } from 'child_process';
 
 interface IConnectOptions {
-  silent?: boolean;
-  port?: number;
-  host?: string;
-  spawnOptions?: SpawnOptions;
-  args?: any[];
-  maxTries?: number;
-  retryDelay?: number;
-  onConnected?: (url?: string) => void;
-  onFailed?: (tries?: number) => void;
-  onRetry?: (tries?: number) => void;
-  onExit?: (err: Error) => void;
+  silent?: boolean;                         // when true doesn't show connection attempts.
+  port?: number;                            // port to connect to.
+  host?: string;                            // host to connect to.
+  spawnOptions?: SpawnOptions;              // process spawn options.
+  args?: any[];                             // arguments to pass
+  maxTries?: number;                        // max connection tries.
+  retryDelay?: number;                      // delay between retries
+  onConnected?: (url?: string) => void;     // on connected message/callback.
+  onFailed?: (tries?: number) => void;      // on failed message/callback.
+  onRetry?: (tries?: number) => void;       // on retry message/callback.
+  onExit?: (err: Error) => void;            // on exit message/callack.
 }
 
 const DEFAULTS: IConnectOptions = {
@@ -26,7 +26,7 @@ const DEFAULTS: IConnectOptions = {
   maxTries: 5,
   retryDelay: 1300,
   onConnected: url => console.log(`Connected to: ${url}`),
-  onRetry: tries => console.log(`Retrying connection (${tries})`),
+  onRetry: undefined, // tries => console.log(`Retrying connection (${tries})`),
   onFailed: failures => console.log(`Failed to connect after (${failures}) attempts`),
   onExit: err => err ? console.log(err.message) : console.log('Electron quit!')
 };
@@ -73,6 +73,7 @@ function knectron(options?: IConnectOptions) {
 
       if (!starting) {
         starting = true;
+
         const result = await load();
         if (options.onExit)
           options.onExit(result);
@@ -95,7 +96,7 @@ function knectron(options?: IConnectOptions) {
 
     timeoutId = setTimeout(() => {
       tries += 1;
-      if (options.onRetry && !options.silent)
+      if (options.onRetry && !options.silent && tries > 1)
         options.onRetry(tries);
       connect();
     }, options.retryDelay);

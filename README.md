@@ -2,6 +2,9 @@
 
 Utility to connect Electron to remote source such as Create React App.
 
+At first you may think this is overkill but we wrote this as it just connects/fires up
+in a little cleaner manner. Once you get the hang of it, you'll likely find it useful.
+
 ## Quick Start
 
 ```sh

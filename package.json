@@ -1,11 +1,16 @@
 {
   "name": "knectron",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "Connect Electron to remote source such as Create React App.",
   "main": "dist/index.js",
   "bin": {
     "knectron": "bin/knectron"
   },
+  "files": [
+    "bin",
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "build": "rimraf ./dist && tsc",
     "watch": "tsc -w",
