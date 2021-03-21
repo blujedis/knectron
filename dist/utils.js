@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.parseArgv = void 0;
 function parseArgv() {
     const argv = process.argv.slice(2);
     const ignoreIdx = argv.indexOf('--');

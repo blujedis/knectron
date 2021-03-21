@@ -57,7 +57,7 @@ function knectron(options?: IConnectOptions) {
 
       child.on('exit', code => {
         if (code === 0)
-          return res();
+          return res(undefined);
         rej(new Error(`Electron exited with code ${code}`));
       });
 
