@@ -119,11 +119,3 @@ The following will be shown:
   knectron ./main.js --spawn-options.stdio='[0,1,2]'`
 
 ```
-
-## Using Knectron with Create React App
-
-You probably want to head over to:
-
-[Sparc](https://github.com/blujedis/sparc)
-
-A working example using **Knectron** with [Create React App](https://github.com/facebook/create-react-app) without ejecting can be found [here](https://github.com/blujedis/sparc/tree/master/example/cra)

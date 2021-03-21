@@ -72,14 +72,10 @@ function knectron(options?: IConnectOptions) {
       client.end();
 
       if (!starting) {
-
         starting = true;
-
         const result = await load();
-
         if (options.onExit)
           options.onExit(result);
-
       }
 
     });
@@ -91,25 +87,17 @@ function knectron(options?: IConnectOptions) {
   client.on('error', () => {
 
     if (tries > options.maxTries) {
-
       clearTimeout(timeoutId);
-
       if (options.onFailed)
         options.onFailed(tries);
-
       return;
-
     }
 
     timeoutId = setTimeout(() => {
-
       tries += 1;
-
       if (options.onRetry && !options.silent)
         options.onRetry(tries);
-
       connect();
-
     }, options.retryDelay);
 
   });
